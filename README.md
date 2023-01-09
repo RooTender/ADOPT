@@ -1,2 +1,2 @@
-# ADOPT
-ADOPT is a project which abbreviation in Polish stands for "Aplikacja Do Optymalizacji Przepływu Transportu" which means "Application made for public transport optimization"."
+# MTAS
+Mass Transit Analtics Suite is a project providing solutions for analyzing and optimizing mass transit problems. This repository is a related web application that presents data related to a chosen issue. Patent or legally protected solutions will NOT be included here!
