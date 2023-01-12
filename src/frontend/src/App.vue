@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <div>Hello from tailwind!</div>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
   </header>
 
   <RouterView />
