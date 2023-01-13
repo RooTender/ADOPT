@@ -3,24 +3,32 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <div class="m-4">
-    <header>
-      <img
-        class="h-16 md:h-20 lg:h-24 mx-auto"
-        alt="logo"
-        src="./assets/images/example-logo.png"
-      />
-    </header>
-    <nav
-      class="my-4 flex flex-row justify-center space-x-4 md:space-x-8 lg:space-x-16 navbar"
-    >
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
+  <div class="container mx-auto m-4">
+    <nav>
+      <div class="flex flex-wrap items-center justify-between px-8">
+        <img
+          src="./assets/images/example-logo.png"
+          class="h-8 md:h-10 mr-3"
+          alt="MTAS logo"
+        />
+
+        <div class="w-auto space-x-8 md:space-x-16 navbar">
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+          <div class="dropdown">
+            <button class="dropbtn">Tools</button>
+            <div class="dropdown-content">
+              <a href="#">Transit mapper</a>
+            </div>
+          </div>
+          <a href="https://github.com/RooTender/MTAS" target="_blank">Github</a>
+        </div>
+      </div>
     </nav>
+    <main>
+      <RouterView />
+    </main>
   </div>
-  <main>
-    <RouterView />
-  </main>
 </template>
 
 <style scoped>
@@ -30,5 +38,41 @@ import { RouterLink, RouterView } from "vue-router";
 
 .navbar > a.router-link-exact-active {
   font-weight: bold;
+}
+
+.dropbtn {
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin: auto;
+  width: max-content;
+  z-index: 1;
+}
+
+.dropdown-content a:first-child {
+  margin-top: 0.5rem;
+}
+
+.dropdown-content a {
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 </style>
