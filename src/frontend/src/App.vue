@@ -1,5 +1,26 @@
 <script setup lang="ts">
+import { toNumber } from "@vue/shared";
 import { RouterLink, RouterView } from "vue-router";
+</script>
+
+<script lang="ts">
+export default {
+  name: "App",
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to, _) {
+        document.title = "MTAS";
+
+        if (to.name !== undefined && to.name !== null) {
+          let routeName = to.name;
+          let title = routeName.charAt(0).toUpperCase() + routeName.slice(1);
+          document.title = `MTAS - ${title}`;
+        }
+      },
+    },
+  },
+};
 </script>
 
 <template>
