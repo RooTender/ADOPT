@@ -36,12 +36,7 @@ export default {
         <div class="w-auto space-x-8 md:space-x-16 navbar">
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/about">About</RouterLink>
-          <div class="dropdown">
-            <button class="dropbtn">Tools</button>
-            <div class="dropdown-content">
-              <a href="#">Transit mapper</a>
-            </div>
-          </div>
+          <RouterLink to="/tools">Tools</RouterLink>
           <a href="https://github.com/RooTender/MTAS" target="_blank">Github</a>
         </div>
       </div>
@@ -59,41 +54,5 @@ export default {
 
 .navbar > a.router-link-exact-active {
   font-weight: bold;
-}
-
-.dropbtn {
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  margin: auto;
-  width: max-content;
-  z-index: 1;
-}
-
-.dropdown-content a:first-child {
-  margin-top: 0.5rem;
-}
-
-.dropdown-content a {
-  text-align: center;
-  padding: 0.5rem;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  text-decoration: underline;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 </style>
