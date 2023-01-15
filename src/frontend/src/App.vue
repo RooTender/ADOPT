@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toNumber } from "@vue/shared";
 import { RouterLink, RouterView } from "vue-router";
 </script>
 
@@ -25,7 +24,7 @@ export default {
 
 <template>
   <div class="container mx-auto m-4">
-    <nav>
+    <nav class="my-4">
       <div class="flex flex-wrap items-center justify-between px-8">
         <img
           src="./assets/images/example-logo.png"
