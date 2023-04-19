@@ -1,3 +1,13 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+import StatusBar from './utils/StatusBar.vue';
 
-<template></template>
+export default {
+  components:{
+    StatusBar
+  }
+}
+</script>
+
+<template>
+    <StatusBar />
+</template>
