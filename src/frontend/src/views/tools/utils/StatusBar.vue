@@ -12,8 +12,8 @@ export default {
 <template>
     <div class="container">
         <ul class="progressbar">
-            <li>Step 1</li>
-            <li>Step 2</li>
+            <li class="active">Step 1</li>
+            <li class="active">Step 2</li>
             <li>Step 3</li>
             <li>Step 4</li>
             <li>Step 5</li>
@@ -36,7 +36,7 @@ export default {
 }
 
 .progressbar li:before{
-  content:"";
+  content:'';
   width: 30px;
   height: 30px;
   border: 2px solid #bebebe;
@@ -55,13 +55,29 @@ export default {
   position: absolute;
   width:100%;
   height: 3px;
-  background: #979797;
-  top: 15px;
+  background: #bebebe;
+  top: 14px;
   left: -50%;
   z-index: -1;
 }
 
+.progressbar li.active:before{
+ border-color: #3aac5d;
+ background: #3aac5d;
+ color: white
+}
+.progressbar li.active:after{
+ background: #3aac5d;
+}
+.progressbar li.active - li:after{
+ background: #3aac5d;
+}
+.progressbar li.active - li:before{
+border-color: #3aac5d;
+background: #3aac5d;
+color: white
+}
 .progressbar li:first-child:after{
-    content: none;
+ content: none;
 }
 </style>
