@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <script lang="ts">
 export default {
     name: 'status-bar',
@@ -32,7 +30,6 @@ export default {
 <style scoped>
 .container{
   width: 100%;
-  position: absolute;
   z-index: 1;
 }
 

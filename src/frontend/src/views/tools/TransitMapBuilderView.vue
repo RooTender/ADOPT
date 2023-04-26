@@ -1,5 +1,5 @@
 <script lang="ts">
-import StatusBar from './utils/StatusBar.vue';
+import StatusBar from './utils/Status.vue';
 
 export default {
   components:{
@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-    <StatusBar :step="1" :length="4"/>
+    <StatusBar :step="3" :steps="['a', 'b', 'c', 'd']"/>
 </template>
