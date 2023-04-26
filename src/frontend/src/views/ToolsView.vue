@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="p-10 text-center">
+  <div class="px-10 text-center">
     <h1 class="my-8 text-3xl">Tools</h1>
     <p class="my-8">
       The MTAS project's "Tools" section provides tools to improve public
