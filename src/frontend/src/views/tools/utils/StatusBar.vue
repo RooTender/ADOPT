@@ -41,7 +41,7 @@ export default {
 
 .progressbar li{
   float: left;
-  width: 20%;
+  width: 100%;
   position: relative;
   text-align: center;
 }
