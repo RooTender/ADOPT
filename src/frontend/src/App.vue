@@ -24,7 +24,7 @@ export default {
 
 <template>
   <div class="container mx-auto m-4">
-    <nav class="my-4">
+    <nav class="mt-4 mb-10">
       <div class="flex flex-wrap items-center justify-between px-8">
         <img
           src="./assets/images/example-logo.png"
