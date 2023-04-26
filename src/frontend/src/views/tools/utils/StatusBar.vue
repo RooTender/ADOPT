@@ -3,20 +3,28 @@
 <script lang="ts">
 export default {
     name: 'status-bar',
-    data () {
-      return {}
+    props: {
+      step: {
+        type: Number,
+        required: true
+      },
+      length: {
+        type: Number,
+        required: true
+      }
+    },
+    methods: {
+      isActive(i: number): boolean {
+        return i <= this.step;
+      }
     }
 }
 </script>
 
 <template>
     <div class="container">
-        <ul class="progressbar">
-            <li class="active">Step 1</li>
-            <li class="active">Step 2</li>
-            <li>Step 3</li>
-            <li>Step 4</li>
-            <li>Step 5</li>
+        <ul class="progressbar ">
+            <li :class="{ 'active': isActive(i) }" v-for="i in length" :key="i" />
         </ul>
     </div>
 </template>
@@ -26,6 +34,12 @@ export default {
   width: 100%;
   position: absolute;
   z-index: 1;
+}
+
+.progressbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progressbar li{

@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-    <StatusBar />
+    <StatusBar :step="1" :length="4"/>
 </template>
