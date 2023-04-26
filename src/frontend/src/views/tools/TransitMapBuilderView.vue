@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-    <StatusBar :step="3" :steps="['Graph to analyze', 'Processing', 'Results']"/>
+    <StatusBar :step="1" :steps="['Graph to analyze', 'Processing', 'Results']"/>
 </template>
