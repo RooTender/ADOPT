@@ -1,60 +1,25 @@
 <script lang="ts">
 import StatusBar from './utils/Status.vue';
+import { useStepStore } from '@/stores/StepStore';
+import Entry from './TransitMapBuilder/Entry.vue';
+import Processing from './TransitMapBuilder/Processing.vue';
+import Result from './TransitMapBuilder/Result.vue';
 
 export default {
-  components:{
-    StatusBar
-  }
-}
-</script>
-
-<script setup lang="ts">
-
-interface InputFormData extends FormData {
-  data: {
-    name: string;
-    file: File;
-  }[];
-}
-
-const submitHandler = async (file: InputFormData) => {
-  const formData = new FormData();
-  formData.append('name', file.data[0].name);
-  formData.append('data', file.data[0].file);
-
-  const allowedExtensions = /(\.csv)$/i;
-
-  if (!allowedExtensions.exec(file.data[0].name)) {
-    alert('Please select a .csv file.');
-  }
-  else
-  {
-    console.log("All good");
+  components: {
+    StatusBar, Entry, Processing, Result
+  },
+  setup() {
+    const stepStore = useStepStore();
+    return { stepStore };
   }
 }
 </script>
 
 <template>
-  <StatusBar :step="1" :steps="['Graph to analyze', 'Processing', 'Results']"/>
-
-  <div class="lg:mx-20">
-    <FormKit type="form" @submit="submitHandler">
-      <FormKit
-        type="file"
-        name="data"
-        validation="required|not:Admin"
-        :validation-messages="{ required: 'Please select a .csv file.' }"
-        label="Bus stop data"
-        multiple="false"
-        accept=".csv"
-        help="Insert CSV with bus stops data"
-      />
-    </FormKit>
-  </div>
+  <StatusBar :step="stepStore.step" :steps="['Graph to analyze', 'Processing', 'Results']"/>
+  <Entry      v-if="stepStore.step == 1"/>
+  <Processing v-if="stepStore.step == 2"/>
+  <Result     v-if="stepStore.step == 3"/>
 </template>
 
-<style scoped>
-FormKit {
-  width: 80% !important;
-}
-</style>
