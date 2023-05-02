@@ -40,7 +40,7 @@ export default {
         </div>
       </div>
     </nav>
-    <main>
+    <main class="mx-10">
       <RouterView />
     </main>
   </div>
