@@ -1,0 +1,21 @@
+.formkit-wrapper {
+    max-width: none;
+}
+
+[data-type="submit"] .formkit-input
+{
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: 0.2s;
+    float: right;
+    margin: 0;
+}
+
+[data-type="submit"] .formkit-input:hover
+{
+    background: black;
+    color: white;
+    transition: 0.2s;
+}
