@@ -12,16 +12,14 @@ export default {
   <StatusBar :step="1" :steps="['Graph to analyze', 'Processing', 'Results']"/>
 
   <div class="lg:mx-20">
-    <h1>New Character</h1>
     <FormKit type="form">
       <FormKit
-        type="text"
-        name="name"
-        id="name"
+        type="file"
         validation="required|not:Admin"
-        label="Name"
-        help="Enter your character's full name"
-        placeholder="“Scarlet Sword”"
+        label="Bus stop data"
+        multiple="false"
+        accept=".csv"
+        help="Insert CSV with bus stops data"
       />
     </FormKit>
   </div>
