@@ -3,11 +3,11 @@ FROM python:3.9-alpine as build-stage
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
 
 # production stage
 FROM python:3.9-alpine as production-stage
-WORKDIR /app
-COPY --from=build-stage /app .
+COPY --from=build-stage /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=build-stage /usr/local/bin/uvicorn /usr/local/bin/uvicorn
+COPY *.py .
 EXPOSE 8080
 CMD ["uvicorn", "main:app", "--port", "8080"]
