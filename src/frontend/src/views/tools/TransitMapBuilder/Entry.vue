@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStepStore } from '@/stores/StepStore'
+import { useStepStore } from "@/stores/StepStore";
 
 interface InputFormData extends FormData {
   data: {
@@ -10,24 +10,22 @@ interface InputFormData extends FormData {
 
 const submitHandler = async (file: InputFormData) => {
   const formData = new FormData();
-  formData.append('name', file.data[0].name);
-  formData.append('data', file.data[0].file);
+  formData.append("name", file.data[0].name);
+  formData.append("data", file.data[0].file);
 
   const allowedExtensions = /(\.csv)$/i;
 
   if (!allowedExtensions.exec(file.data[0].name)) {
-    alert('Please select a .csv file.');
-  }
-  else
-  {
+    alert("Please select a .csv file.");
+  } else {
     const counterStore = useStepStore();
     counterStore.nextStep();
   }
-}
+};
 </script>
 
 <template>
-    <div class="lg:mx-20">
+  <div class="lg:mx-20">
     <FormKit type="form" @submit="submitHandler">
       <FormKit
         type="file"

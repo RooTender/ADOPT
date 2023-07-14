@@ -1,19 +1,18 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 export const useStepStore = defineStore({
-  id: 'counter',
+  id: "counter",
   state: () => ({
     step: 1,
   }),
   actions: {
     nextStep() {
-      this.step++
+      this.step++;
     },
     previousStep() {
-        if (this.step > 1)
-        {
-            this.step--;
-        }
+      if (this.step > 1) {
+        this.step--;
+      }
     },
   },
-})
+});

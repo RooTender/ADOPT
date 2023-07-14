@@ -1,32 +1,32 @@
 <script lang="ts">
-import StatusBar from './StatusBar.vue';
+import StatusBar from "./StatusBar.vue";
 
 export default {
-    components:{
-        StatusBar
+  components: {
+    StatusBar,
+  },
+  name: "status",
+  props: {
+    step: {
+      type: Number,
+      required: true,
     },
-    name: 'status',
-    props: {
-      step: {
-        type: Number,
-        required: true
-      },
-      steps: {
-        type: Array<String>,
-        required: true
-      }
+    steps: {
+      type: Array<String>,
+      required: true,
     },
-    methods: {
-      getStepsCount(): number {
-        return this.steps.length;
-      }
-    }
-}
+  },
+  methods: {
+    getStepsCount(): number {
+      return this.steps.length;
+    },
+  },
+};
 </script>
 
 <template>
-    <div class="px-10 text-center">
-        <h1 class="my-8 text-3xl">{{ steps[step - 1] }}</h1>
-        <StatusBar class="my-8" :step="step" :length="getStepsCount()"/>
-    </div>
+  <div class="px-10 text-center">
+    <h1 class="my-8 text-3xl">{{ steps[step - 1] }}</h1>
+    <StatusBar class="my-8" :step="step" :length="getStepsCount()" />
+  </div>
 </template>
