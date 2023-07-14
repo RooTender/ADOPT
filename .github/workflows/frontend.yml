@@ -9,7 +9,7 @@ jobs:
     name: Quality Testing
     runs-on: ubuntu-latest
     env:
-      working-directory: src/frontend
+      working_directory: src/frontend
     
     steps:
       - name: Initialize environment
@@ -29,7 +29,7 @@ jobs:
     name: Quality Control
     runs-on: ubuntu-latest
     env:
-      working-directory: src/frontend
+      working_directory: src/frontend
     needs: qt
     
     steps:
