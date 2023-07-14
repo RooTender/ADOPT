@@ -4,12 +4,14 @@ on:
   pull_request:
     branches: [develop]
 
+defaults:
+  run:
+    working-directory: src/frontend
+
 jobs:
   qt:
     name: Quality Testing
     runs-on: ubuntu-latest
-    env:
-      working_directory: src/frontend
     
     steps:
       - name: Initialize environment
@@ -28,8 +30,6 @@ jobs:
   qc:
     name: Quality Control
     runs-on: ubuntu-latest
-    env:
-      working_directory: src/frontend
     needs: qt
     
     steps:
