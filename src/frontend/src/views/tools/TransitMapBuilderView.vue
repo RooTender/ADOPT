@@ -20,11 +20,14 @@ export default {
 </script>
 
 <template>
-  <StatusBar
-    :step="stepStore.step"
-    :steps="['Graph to analyze', 'Processing', 'Results']"
-  />
-  <Entry v-if="stepStore.step == 1" />
-  <Processing v-if="stepStore.step == 2" />
-  <Result v-if="stepStore.step == 3" />
+  <div>
+    <StatusBar
+      :step="stepStore.step"
+      :steps="['Graph to analyze', 'Processing', 'Results']"
+    />
+
+    <Entry v-if="stepStore.step == 1" />
+    <Processing v-if="stepStore.step == 2" />
+    <Result v-if="stepStore.step == 3" />
+  </div>
 </template>
