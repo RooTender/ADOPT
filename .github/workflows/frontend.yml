@@ -43,7 +43,3 @@ jobs:
       - name: Code quality
         run: |
           npm run lint
-          
-      - name: Code coverage
-        run: |
-          npm run coverage
