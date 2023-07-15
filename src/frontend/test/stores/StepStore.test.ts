@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from "pinia";
-import { useStepStore } from "../../src/stores/StepStore";
+import { useStepStore } from "@/stores/StepStore";
 import { describe, beforeEach, it, expect } from "vitest";
 
 describe("useStepStore", () => {
