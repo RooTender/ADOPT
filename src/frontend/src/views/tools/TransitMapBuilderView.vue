@@ -1,16 +1,16 @@
 <script lang="ts">
-import StatusBar from "./utils/Status.vue";
+import StatusBar from "./utils/StatusBar.vue";
 import { useStepStore } from "@/stores/StepStore";
-import Entry from "./TransitMapBuilder/Entry.vue";
-import Processing from "./TransitMapBuilder/Processing.vue";
-import Result from "./TransitMapBuilder/Result.vue";
+import EntryStep from "./TransitMapBuilder/EntryStep.vue";
+import ProcessingStep from "./TransitMapBuilder/ProcessingStep.vue";
+import ResultStep from "./TransitMapBuilder/ResultStep.vue";
 
 export default {
   components: {
     StatusBar,
-    Entry,
-    Processing,
-    Result,
+    EntryStep,
+    ProcessingStep,
+    ResultStep,
   },
   setup() {
     const stepStore = useStepStore();
@@ -26,8 +26,8 @@ export default {
       :steps="['Graph to analyze', 'Processing', 'Results']"
     />
 
-    <Entry v-if="stepStore.step == 1" />
-    <Processing v-if="stepStore.step == 2" />
-    <Result v-if="stepStore.step == 3" />
+    <EntryStep v-if="stepStore.step == 1" />
+    <ProcessingStep v-if="stepStore.step == 2" />
+    <ResultStep v-if="stepStore.step == 3" />
   </div>
 </template>
