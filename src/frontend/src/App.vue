@@ -8,7 +8,7 @@ export default {
   watch: {
     $route: {
       immediate: true,
-      handler(to, _) {
+      handler(to) {
         document.title = "MTAS";
 
         if (to.name !== undefined && to.name !== null) {

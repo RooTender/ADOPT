@@ -1,0 +1,45 @@
+name: Frontend
+
+on:
+  pull_request:
+    branches: [develop]
+
+defaults:
+  run:
+    working-directory: src/frontend
+
+jobs:
+  qt:
+    name: Quality Testing
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Initialize environment
+        uses: actions/checkout@v3
+        
+      - name: Build
+        run: |
+          npm ci
+          npm run build-only
+          
+      - name: Unit tests
+        run: |
+          npm run test
+  
+  qc:
+    name: Quality Control
+    runs-on: ubuntu-latest
+    needs: qt
+    
+    steps:
+      - name: Initialize environment
+        uses: actions/checkout@v3
+        
+      - name: Static type check
+        run: |
+          npm ci
+          npm run type-check
+          
+      - name: Code quality
+        run: |
+          npm run lint

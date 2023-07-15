@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>This is Home component.</div>
+  <div>This is Result step component.</div>
 </template>
