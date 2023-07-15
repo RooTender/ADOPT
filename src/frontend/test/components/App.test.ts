@@ -1,13 +1,8 @@
 import { mount } from "@vue/test-utils";
+import { waitForRender } from "@test_utils";
 import { describe, it, expect } from "vitest";
-import router from "../../src/router/index";
-import App from "../../src/App.vue";
-
-const testRenderedElement = async (test: any) => {
-  setTimeout(() => {
-    test();
-  }, 1000);
-};
+import router from "@/router/index";
+import App from "@/App.vue";
 
 describe("App.vue", () => {
   it('sets the document title to "MTAS" initially', () => {
@@ -28,7 +23,7 @@ describe("App.vue", () => {
     });
     router.push({ name: "about" });
 
-    testRenderedElement(() => {
+    waitForRender(() => {
       expect(document.title).toEqual("MTAS - About");
     });
   });
@@ -40,7 +35,7 @@ describe("App.vue", () => {
       },
     });
 
-    testRenderedElement(() => {
+    waitForRender(() => {
       const routerLinks = wrapper.findAll("a.router-link");
 
       expect(routerLinks.length).toBe(4);
@@ -60,7 +55,7 @@ describe("App.vue", () => {
       },
     });
 
-    testRenderedElement(() => {
+    waitForRender(() => {
       const activeLink = wrapper.find("a.router-link-exact-active");
 
       expect(activeLink.classes()).toContain("router-link-exact-active");
@@ -75,7 +70,7 @@ describe("App.vue", () => {
       },
     });
 
-    testRenderedElement(() => {
+    waitForRender(() => {
       const activeLink = wrapper.find("a.router-link-exact-active");
 
       expect(activeLink.attributes("style")).toContain("font-weight: bold;");
@@ -89,7 +84,7 @@ describe("App.vue", () => {
       },
     });
 
-    testRenderedElement(() => {
+    waitForRender(() => {
       const activeLink = wrapper.find("a.router-link-exact-active");
 
       activeLink.trigger("mouseover");
