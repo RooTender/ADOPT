@@ -1,23 +1,18 @@
 version: "3.9"
 
 services:
-  frontend:
-    container_name: frontend
-    image: mtas-frontend:latest
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+    frontend:
+        container_name: frontend
+        image: mtas-frontend:latest
+        build: ./frontend
+        ports:
+            - "80:80"
+        depends_on:
+            - backend
 
-  backend:
-    container_name: backend
-    image: mtas-backend:latest
-    build: ./backend
-    ports:
-      - "8000:8000"
-    networks:
-      - app-network
-
-networks:
-  app-network:
+    backend:
+        container_name: backend
+        image: mtas-backend:latest
+        build: ./backend
+        ports:
+            - "8080:8080"
