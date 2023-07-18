@@ -16,3 +16,10 @@ services:
         build: ./backend
         ports:
             - "8080:8080"
+
+    services:
+        container_name: bridge
+        image: rabbitmq:3.12-rc-alpine
+        ports:
+            - "5672:5672"
+            - "15672:15672"
