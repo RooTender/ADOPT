@@ -7,19 +7,26 @@ services:
         build: ./frontend
         ports:
             - "80:80"
-        depends_on:
-            - backend
 
     backend:
         container_name: backend
+        restart: on-failure
         image: mtas-backend:latest
         build: ./backend
         ports:
             - "8080:8080"
+        depends_on:
+            services:
+                condition: service_healthy
 
     services:
-        container_name: bridge
+        container_name: queue
         image: rabbitmq:3.12-rc-alpine
         ports:
             - "5672:5672"
             - "15672:15672"
+        healthcheck:
+            test: rabbitmq-diagnostics check_port_connectivity
+            interval: 1s
+            timeout: 3s
+            retries: 30
