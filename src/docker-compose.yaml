@@ -3,6 +3,7 @@ version: "3.9"
 services:
     frontend:
         container_name: frontend
+        restart: on-failure
         image: mtas-frontend:latest
         build: ./frontend
         ports:
@@ -16,11 +17,12 @@ services:
         ports:
             - "8080:8080"
         depends_on:
-            services:
+            broker:
                 condition: service_healthy
 
-    services:
-        container_name: queue
+    broker:
+        container_name: broker
+        restart: always
         image: rabbitmq:3.12-rc-alpine
         ports:
             - "5672:5672"

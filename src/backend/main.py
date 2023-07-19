@@ -3,7 +3,7 @@ import pika
 
 app = FastAPI()
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
 channel = connection.channel()
 channel.queue_declare(queue='xd')
 
