@@ -32,3 +32,12 @@ services:
             interval: 1s
             timeout: 3s
             retries: 30
+
+    transit_visualizer:
+        container_name: tv-service
+        restart: always
+        image: mtas-tv-service:latest
+        build: ./services/TransitVisualizer/TransitVisualizer
+        depends_on:
+            broker:
+                condition: service_healthy
