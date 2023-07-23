@@ -1,17 +1,25 @@
 from fastapi import FastAPI
-import pika
+from broker import RabbitMQBroker
 
 app = FastAPI()
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
-channel = connection.channel()
-channel.queue_declare(queue='hello')
+transit_viewer = RabbitMQBroker(queue_name='hello')
+queue2_broker = RabbitMQBroker(queue_name='queue2')
 
 
 @app.get('/')
-async def test():
-    channel.basic_publish(exchange='',
-                          routing_key='hello',
-                          body='Hello World!')
-    print(" [x] Sent 'Hello World!'")
-    return {"message": "Hello world!"}
+async def send_to_queue1():
+    transit_viewer.send_message('Hello from Queue 1!')
+    return {"message": "Message sent to Queue 1"}
+
+
+@app.get('/test')
+async def send_to_queue2():
+    queue2_broker.send_message('Hello from Queue 2!')
+    return {"message": "Message sent to Queue 2"}
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    transit_viewer.close()
+    queue2_broker.close()
