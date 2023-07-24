@@ -3,7 +3,7 @@ from broker import RabbitMQBroker
 
 app = FastAPI()
 
-transit_viewer = RabbitMQBroker(queue_name='hello')
+transit_viewer = RabbitMQBroker(queue_name='Transit Visualizer')
 queue2_broker = RabbitMQBroker(queue_name='queue2')
 
 

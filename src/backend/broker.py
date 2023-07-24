@@ -16,7 +16,8 @@ class RabbitMQBroker:
             self.channel.queue_declare(queue=self.queue_name)
             print(f" [{self.queue_name}] Hello, I am ALIVE!")
         except pika.exceptions.AMQPError as exc:
-            print(f"Failed to establish RabbitMQ connection: {exc}")
+            print(
+                f" [{self.queue_name}] Failed to establish RabbitMQ connection: {exc}")
 
     def send_message(self, message):
         try:
@@ -33,11 +34,13 @@ class RabbitMQBroker:
                 print(
                     f" [{self.queue_name}] Failed to send message: RabbitMQ connection is not available.")
         except pika.exceptions.AMQPError as exc:
-            print(f"Failed to send message: {exc}")
+            print(f" [{self.queue_name}] Failed to send message: {exc}")
+            print(f" [{self.queue_name}] Retrying...")
+            self.send_message(message)
 
     def close(self):
         if self.channel is not None and not self.channel.is_closed:
             self.channel.close()
         if self.connection is not None and not self.connection.is_closed:
             self.connection.close()
-        print(f"Disconnected from RabbitMQ queue: {self.queue_name}")
+        print(f" [{self.queue_name}] Disconnected from RabbitMQ queue.")
