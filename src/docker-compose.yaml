@@ -1,23 +1,43 @@
 version: "3.9"
 
 services:
-  frontend:
-    container_name: frontend
-    image: mtas-frontend:latest
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+    frontend:
+        container_name: frontend
+        restart: on-failure
+        image: mtas-frontend:latest
+        build: ./frontend
+        ports:
+            - "80:80"
 
-  backend:
-    container_name: backend
-    image: mtas-backend:latest
-    build: ./backend
-    ports:
-      - "8000:8000"
-    networks:
-      - app-network
+    backend:
+        container_name: backend
+        restart: on-failure
+        image: mtas-backend:latest
+        build: ./backend
+        ports:
+            - "8080:8080"
+        depends_on:
+            bridge:
+                condition: service_healthy
 
-networks:
-  app-network:
+    bridge:
+        container_name: bridge
+        restart: on-failure
+        image: rabbitmq:3.12-rc-alpine
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        healthcheck:
+            test: rabbitmq-diagnostics check_port_connectivity
+            interval: 1s
+            timeout: 3s
+            retries: 30
+
+    transit_visualizer:
+        container_name: s-tra_vis
+        restart: always
+        image: mtas-s-tra_vis:latest
+        build: ./services/TransitVisualizer
+        depends_on:
+            bridge:
+                condition: service_healthy
