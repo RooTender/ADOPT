@@ -11,7 +11,7 @@ class RabbitMQBroker:
     def connect(self):
         try:
             self.connection = pika.BlockingConnection(
-                pika.ConnectionParameters('broker'))
+                pika.ConnectionParameters('bridge'))
             self.channel = self.connection.channel()
             self.channel.queue_declare(queue=self.queue_name)
             print(f" [{self.queue_name}] Hello, I am ALIVE!")
