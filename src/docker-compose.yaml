@@ -9,35 +9,10 @@ services:
         ports:
             - "80:80"
 
-    backend:
-        container_name: backend
-        restart: on-failure
-        image: mtas-backend:latest
-        build: ./backend
-        ports:
-            - "8080:8080"
-        depends_on:
-            bridge:
-                condition: service_healthy
-
-    bridge:
-        container_name: bridge
-        restart: on-failure
-        image: rabbitmq:3.12-rc-alpine
-        ports:
-            - "5672:5672"
-            - "15672:15672"
-        healthcheck:
-            test: rabbitmq-diagnostics check_port_connectivity
-            interval: 1s
-            timeout: 3s
-            retries: 30
-
     transit_visualizer:
-        container_name: s-tra_vis
+        container_name: micro-tv
         restart: always
-        image: mtas-s-tra_vis:latest
+        image: mtas-micro-tv:latest
         build: ./services/TransitVisualizer
-        depends_on:
-            bridge:
-                condition: service_healthy
+        ports:
+            - "5001:80"
