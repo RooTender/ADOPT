@@ -4,7 +4,6 @@ services:
     frontend:
         container_name: frontend
         restart: on-failure
-        image: mtas-frontend:latest
         build: ./frontend
         ports:
             - "80:80"
@@ -12,7 +11,6 @@ services:
     transit_visualizer:
         container_name: micro-tv
         restart: always
-        image: mtas-micro-tv:latest
         build: ./services/TransitVisualizer
         ports:
             - "5001:80"
