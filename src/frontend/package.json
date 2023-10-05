@@ -20,9 +20,11 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@babel/types": "^7.23.0",
     "@pinia/testing": "^0.1.2",
     "@rushstack/eslint-patch": "^1.1.4",
-    "@types/node": "^18.11.12",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^18.18.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-v8": "^0.33.0",
     "@vue/eslint-config-prettier": "^7.0.0",
